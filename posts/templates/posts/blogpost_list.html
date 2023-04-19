@@ -1,0 +1,19 @@
+<!-- posts/templates/posts/blogpost_list.html -->
+
+{% extends "base.html" %}
+
+{% block title %}
+    <h1>My posts</h1>
+{% endblock title %}
+
+{% block content %}
+<!-- <p><a href="{% url 'posts:blogpost_form' %}">Create Article</a></p> -->
+    {% for post in posts %}
+        <h2>{{post.title}}</h2>
+        {{post.content | safe | truncatewords:100}}
+        <p>Author: <i>{{post.default_author}}</i>, published: {{post.created_on}}</p>
+        <form action="{% url 'posts:blogpost_detail' post.slug %}">
+            <button>Read</button>
+        </form>
+    {% endfor %}
+{% endblock content %}

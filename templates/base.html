@@ -1,0 +1,23 @@
+<!-- templates/base.html -->
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% block title %} <title>Blog home page</title> {% endblock title %}
+</head>
+<body>
+    <nav>
+        <a href="{% url 'posts:blogpost_list' %}">Home pages </a>
+        {% if user.is_authenticated %}
+        <span> | </span><a href="{% url 'posts:blogpost_form' %}">Create post</a>
+        {% endif  %}
+    </nav>
+    <section id="blog" > {% block content %}{% endblock content %} </section>
+</body>
+</html>

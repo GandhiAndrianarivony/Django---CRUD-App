@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}
+    <h2>{{post.title}}</h2>
+{% endblock title %}
+
+{% block content %}
+    <article>
+        {{post.content|linebreaks|safe}}
+        {% if user.is_authenticated %}
+            <div>
+                    <a href="{% url 'posts:blogpost_update' post.slug %}">Edit post</a> | <a href="{% url 'posts:blogpost_delete' post.slug %}">Delete post</a> 
+            </div>
+        {% endif %}
+        <h5>Author: <i>{{post.default_author}}</i>, published: {{post.created_on}}</h5>
+    </article>
+{% endblock content %}
