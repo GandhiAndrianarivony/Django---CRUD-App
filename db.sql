@@ -10,10 +10,3 @@ ALTER ROLE blogadmin SET default_transaction_isolation TO 'read committed';
 
 -- Grant blog db access to blogadmin
 GRANT ALL PRIVILEGES ON DATABASE blog TO blogadmin;
-
-CREATE TABLE user(
-    id BIGINT SERIAL,
-    name VARCHAR (150),
-    age INTEGER
-
-)
